@@ -1,0 +1,145 @@
+"... tak aby byly nekde zachycene a neztracely se, a v zadnym pripade abyste je
+    nenosili v hlave, protoze hlava je moc vzacne misto na to, abyste si tam
+    pamatovali seznamy."
+                                            Tomáš Holan
+
+TEST:
+    0) Upresneni zadani
+    1) Postrehy
+    2) Zduvodnena volab algoritmu
+    3) Reprezentace dat
+    4) Dekompozice
+    5) Diskuse
+
+    dobry je "premyslet do sirky", tzn. kazde moznosti venovat trochu casu,
+    abych nevsadil vsechen cas na spatnou cestu
+
+v C# nemuzu dedit od vice trid (nasobna dedicnost neni), ale muzu dedit od vice
+    interfacu
+    muzu ale dedit od jedne tridy a pak libovolny pocet 
+
+funkce virtualni/abstraktni
+    virtualni se da predefinovavat
+    kdyz mam ve tride abstraktni metodu, cela trida je pak abstraktni
+    u virtualni SE AZ ZA BEHU resi, jaka funkce se spusti!!!!
+    kdyz abstraktni => virtualni
+    abstraktni je takovej placeholder na funkci
+    v neabstraktni tride muzeme mit virtualni metodu
+    pomoci base muzu volat metodu predka (ale max o jedna, tzn jen rodice, ne
+        dedu)
+
+DELEGATE
+delegate int Funkce(int x, int y);
+    je to typ 
+static int Soucet(int a, int b){ return a+b }
+static int Soucin(int a, int b){ return c*d }
+
+ja pak muzu udelat v main treba:
+Funkce f = Soucet;
+int x = f(10, 20); // x = 30
+
+tyhle delegate funkce se daj pouzit treba kdyz chci nejakou funkci vykreslovat
+    treba Math.Sin predam a udelam funkci na vykresleni
+    proste se to da udelat, detaily nechci ukazovat
+
+muzu udelat promennou nejaky ty funkce a muzu udelat
+Funkce f = funkce1;
+f += funkce2;
+f += funkce3;
+.. a ted jsou ty funkce za sebou, takze se budou spoustet za sebou <3
+
+kdyz pak budu odecitat funkce jednoho typu, tak se odecita od konce a kdyz jsou
+    prohazene, tak ji to vezme treba i nekde uprostred
+
+Funkce tisk2krat = delegate(double x) {Console.Write($"{x*2}");};
+    je to anonymni funkce - funkce bez zadneho jmena
+
+LAMBDA FUNKCE
+x => Math.Sin(x-5) ... je to funkce, ktera ma parametr x s telem Math.Sin(x-5)
+
+
+VLAKNA
+using System.Threading;
+Thread th = new Thread(NejakaFunkce);
+    maj spolecny promenny a tak
+    vlakno ma ale svuj zasobnik a muze mit svoje promenny
+th.Start();
+    timhle se zavola ta funkce NejakaFunkce
+new Thread(DalsiFunkce).Start();
+    nemusim ani tomu vlaknu delat promennou
+
+Environment.ProcessorCount ... to je kolik mam vlaken
+tomu threadu muzu dat normalne delegata, zejo
+
+RACE CONDITION
+ze se ve dvou vlaknech upravuje jedna promenna
+je to hrozne blbe hledatelna chyba, protoze to nastane jen nekdy
+
+proto se ty veci ZAMYKAJ
+    kdyz se dostanu do nejakyho bloku prikazu, tak vlakno nemuze byt preruseno,
+        dokud se neprerusi
+
+ZAMYKANI
+objekt ma jedinecnou adresu v pameti a ja potrebuju lock nejak identifikovat
+object klic = new object();
+    tady se pouziva objekt, protoze zabira nejmene pameti
+    muze to byt ale klidne string nebo cokoliv (ten zabira ale mnohem vic mista)
+lock(klic){ kod, ktery je zamknuty }
+muze byt vice locku se stejnym klicem, v tom pripade muzeme bejt jen v jednom
+    locku naraz - dalsi vlakno, kdyz chce do toho locku se stejnym identifikat-     orem, tak musi pockat
+
+DEADLOCK - uviznuti
+mejme dva klice
+proces 1 je v klici A a ceka na klic B, protoze ho potrebuje
+proces 2 je v klici B a ceka na klic A, potrebuje ho
+    ale je problem, ted nikdo nebude vlastne nic delat, zamkly se naraz
+
+HASHOVANI
+univerzum - chceme si pamatovat omezeny pocet z toho
+kolize - muzeme je retezit
+    nebo otevrene hashovani - najdeme novou pozici
+
+Optimalni vyhledavaci strom
+kdyz zname cetnosti dotazu
+
+VYJIMKY
+try bloky, catch (jaky typ vyjimky chceme odchytit)
+catch exception bychom nemeli pouzivat nejak
+finally blok, throw
+
+REFERENCE
+void funkce(ref int a, ref int b)
+funkce(ref a, ref b);
+
+GENERICKA METODY A TRIDY
+void vymen<T, W>(ref T t1, ref T t2, W w1){ ... }
+    takhle jsme vyrobili funkci s jakymkoliv typem, ktery chceme :)
+void vymen<int, int, double> (4, 5, 6.33);
+
+muze tam byt void f<T>(T a, T b) where T:IComparable{ ... }
+    je to ze T splnuje nejakej interface, diky tomu udelame, ze bude mit ta
+        trida definovanou porovnavaci funkci CompareTo()
+
+INTERFACE
+je to jako seznam funkci:
+ty funkce nejsou definovany, je jako popsane rozhrani, ale implementace neni
+    definovana
+je to proto, ze neni nasobna dedicnost
+muzeme tedy rict, ze prvek splnuje libovolny pocet interfacu
+
+interface ISeznam{
+    public bool JePrazdny();
+    public void PridejPrvek();
+}
+
+AUTOMATICKE TESTY
+NUnit
+pravym tlacitkem kliknu na jmeno funkce a tam je neco jako Unit Tests
+    jde to jen pro verejny tridy (aby to bylo videt z jinych programu)
+pouzijeme ten jejich nejakej framework, jsou tam tyto funkce:
+Assert.AreEqual(2, Program.Soucet(1,1));
+je tam nekde nejakej pruzkumnik testu
+
+RESOURCES
+kdyz chci vypisovat hlasky, tak jsou v nejakym samostatnym souboru properties
+

@@ -18,6 +18,23 @@ v C# nemuzu dedit od vice trid (nasobna dedicnost neni), ale muzu dedit od vice
     interfacu
     muzu ale dedit od jedne tridy a pak libovolny pocet 
 
+
+VIRTUALNI FUNKCE
+    virtualni funkce se da predefinovat
+    vf je tedy zavisla na instanci
+    kdyz je trida A a od ni dedi B (je jejim potomkem) - muzeme vytvorit objekt
+        typu A
+    tento objekt muze ukazovat jak na A tak na B - neni to pri kompilaci jasne
+    pokud neni funkce virtualni, tak se vola funkce z A, i kdyz mame objekt
+        typu B
+    virtualni funkce udela bud:
+        1) podiva se na typ objektu
+        2) nebo vybere funkci z dat objektu, kde je TABULKA VIRTUALNICH METOD
+      => lehke snizeni vykonu programu
+    TABULKA VIRTUALNICH METOD
+    v objektu je promenna ukazujici na tuhle tabulku
+    ta tabulka je pole ukazatelu na virtualni funkce
+
 funkce virtualni/abstraktni
     virtualni se da predefinovavat
     kdyz mam ve tride abstraktni metodu, cela trida je pak abstraktni

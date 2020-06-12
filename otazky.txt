@@ -1,6 +1,11 @@
 zkouset vsechno resit dynamickym prog., kdyz to neuspeje, zkusit neco jinyho
 http://forum.matfyz.info/viewtopic.php?f=247&t=11818
 
+DOBRA RADA, KDYZ DOSTANEME PERGELA:
+tohle napsala jedna holka na forum, co pergela mela:
+Z ústní mi dal dynamické programování a ptal se jaký znám použití, 
+    uzávorkování násobení matic je prý jeho nejoblíbenější.
+
 halda v O(n)
 definice O, Theta, Omega
 casova slozitost trideni + dukaz
@@ -8,3 +13,7 @@ grafovy algoritmy + dukaz
 kostry + dukaz
 prace s AVL stromy
 dynamicke programovani - uzavorkovani matic
+externi trida
+kdy ma trida bezparametrovy konstruktor
+Kolik max rotaci pri insertu do AVL (1?)
+kolik max rotaci pri delete do AVL (logn?)

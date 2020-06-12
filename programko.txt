@@ -72,8 +72,12 @@ nelze od ni vyvaret instance a nelze od ni dedit
 PRISTUPNOST - ZAPOUZDRENI
 public - vsem
 protected - jen z tehle tridy/struktury a z potomku
-internal - jen z aktualniho assembly (?????)
-protected internal - jen z aktualniho assembly nebo z potomku (?????)
+internal - jen z aktualniho assembly
+    assembly je soubor
+    takze kdyz je trida internal, tak lze delat jeji instanci jen v tom souboru
+    pokud je jen nejaka promenna ve tride internal, tak muzu udelat instanci
+        tridy i jinde, ale nemam pristup k ty promenny
+protected internal - jen z aktualniho assembly nebo z potomku 
 private - jen z tyhle tridy/struktury
 
 properties - vlastnosti = datova slozka
@@ -86,6 +90,16 @@ public sealed override void neco() ... uz dal nebude virtualni
 
 INTERFACE
 je to takova smlouva - rika se v ni, co bude mit definovano potomek
+je to jako seznam funkci:
+ty funkce nejsou definovany, je jako popsane rozhrani, ale implementace neni
+    definovana
+je to proto, ze neni nasobna dedicnost
+muzeme tedy rict, ze prvek splnuje libovolny pocet interfacu
+
+interface ISeznam{
+    public bool JePrazdny();
+    public void PridejPrvek();
+}
 
 DELEGATE
 delegate int Funkce(int x, int y);
@@ -145,7 +159,8 @@ object klic = new object();
     muze to byt ale klidne string nebo cokoliv (ten zabira ale mnohem vic mista)
 lock(klic){ kod, ktery je zamknuty }
 muze byt vice locku se stejnym klicem, v tom pripade muzeme bejt jen v jednom
-    locku naraz - dalsi vlakno, kdyz chce do toho locku se stejnym identifikat-     orem, tak musi pockat
+    locku naraz - dalsi vlakno, kdyz chce do toho locku se stejnym identifikat-
+        orem, tak musi pockat 
 
 DEADLOCK - uviznuti
 mejme dva klice
@@ -170,7 +185,7 @@ REFERENCE
 void funkce(ref int a, ref int b)
 funkce(ref a, ref b);
 
-GENERICKA METODY A TRIDY
+GENERICKE METODY A TRIDY
 void vymen<T, W>(ref T t1, ref T t2, W w1){ ... }
     takhle jsme vyrobili funkci s jakymkoliv typem, ktery chceme :)
 void vymen<int, int, double> (4, 5, 6.33);
@@ -179,17 +194,6 @@ muze tam byt void f<T>(T a, T b) where T:IComparable{ ... }
     je to ze T splnuje nejakej interface, diky tomu udelame, ze bude mit ta
         trida definovanou porovnavaci funkci CompareTo()
 
-INTERFACE
-je to jako seznam funkci:
-ty funkce nejsou definovany, je jako popsane rozhrani, ale implementace neni
-    definovana
-je to proto, ze neni nasobna dedicnost
-muzeme tedy rict, ze prvek splnuje libovolny pocet interfacu
-
-interface ISeznam{
-    public bool JePrazdny();
-    public void PridejPrvek();
-}
 
 AUTOMATICKE TESTY
 NUnit

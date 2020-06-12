@@ -17,33 +17,75 @@ TEST:
 v C# nemuzu dedit od vice trid (nasobna dedicnost neni), ale muzu dedit od vice
     interfacu
     muzu ale dedit od jedne tridy a pak libovolny pocet 
+    kdyz dedim lze delit od vice trid naraz, muzu od jedny dedit vickrat
+        = diamond problem
+        => proto se delaj interfacy
 
+VIRTUALNI METODA
+virtualni funkce se da predefinovat
+vf je tedy zavisla na instanci
+u vf se az za behu resi, jaka funkce se spusti
+kdyz je trida A a od ni dedi B (je jejim potomkem) - muzeme vytvorit objekt
+    typu A
+tento objekt muze ukazovat jak na A tak na B - neni to pri kompilaci jasne
+pokud neni funkce virtualni, tak se vola funkce z A, i kdyz mame objekt
+    typu B
+virtualni funkce udela bud:
+    1) podiva se na typ objektu
+    2) nebo vybere funkci z dat objektu, kde je TABULKA VIRTUALNICH METOD
+  => lehke snizeni vykonu programu
+TABULKA VIRTUALNICH METOD
+v objektu je promenna ukazujici na tuhle tabulku
+ta tabulka je pole ukazatelu na virtualni funkce
+je jedna pro kazdou tridu
+pri volani metody se zavola ta, ktera je v tyhle tabulce ulozena
+objekt obsahuje odkaz na tuhle tabulku
+dosadi ho tam konstruktor ten odkaz
 
-VIRTUALNI FUNKCE
-    virtualni funkce se da predefinovat
-    vf je tedy zavisla na instanci
-    kdyz je trida A a od ni dedi B (je jejim potomkem) - muzeme vytvorit objekt
-        typu A
-    tento objekt muze ukazovat jak na A tak na B - neni to pri kompilaci jasne
-    pokud neni funkce virtualni, tak se vola funkce z A, i kdyz mame objekt
-        typu B
-    virtualni funkce udela bud:
-        1) podiva se na typ objektu
-        2) nebo vybere funkci z dat objektu, kde je TABULKA VIRTUALNICH METOD
-      => lehke snizeni vykonu programu
-    TABULKA VIRTUALNICH METOD
-    v objektu je promenna ukazujici na tuhle tabulku
-    ta tabulka je pole ukazatelu na virtualni funkce
+pomoci base muzu volat predka - ale jen o jedna (tzn. jen rodice)
+v pythonu jsou vsechny metody virtualni
 
-funkce virtualni/abstraktni
-    virtualni se da predefinovavat
-    kdyz mam ve tride abstraktni metodu, cela trida je pak abstraktni
-    u virtualni SE AZ ZA BEHU resi, jaka funkce se spusti!!!!
-    kdyz abstraktni => virtualni
-    abstraktni je takovej placeholder na funkci
-    v neabstraktni tride muzeme mit virtualni metodu
-    pomoci base muzu volat metodu predka (ale max o jedna, tzn jen rodice, ne
-        dedu)
+ABSTRAKTNI METODA
+nemuzeme udelat jeji instanci
+je virtualni a je jen k tomu, aby mohla bejt predefinovana v potomcich
+    potomci samozrejme nemohou volat tuhle metodu predka
+kdyz je jedna abstraktni metoda ve tride, tak je cela trida abstraktni
+ABSTRAKTNI => VIRTUALNI
+abstraktni je jakoby placeholder pro funkci - neni proste VUBEC definovana
+v neabstraktni tride MUZEME mit virtualni metodu
+pokud to tedy dobre chapu, tak abstraktni neni definovana vubec
+    virtualni je definovana v predkovi, ale lze predefinovat
+
+POLYMORFISMUS
+objekty se vytvari dynamicky
+promenne objektovych typu JSOU UKAZATELE
+kompatibilita typu (to, ze pes je take zvire, obracene to nejde ale)
+vola se metoda aktualnimu TYPU (tride) objektu
+    ta metoda MUSI byt virtualni
+
+STATICKE CLENY A TRIDY
+cleny jsou alokovany ve tride a ne v instanci
+pristupne pomoci jmena tridy (ne pomoci instance)
+staticka trida obsahuje POUZE staticke cleny
+nelze od ni vyvaret instance a nelze od ni dedit
+
+PRISTUPNOST - ZAPOUZDRENI
+public - vsem
+protected - jen z tehle tridy/struktury a z potomku
+internal - jen z aktualniho assembly (?????)
+protected internal - jen z aktualniho assembly nebo z potomku (?????)
+private - jen z tyhle tridy/struktury
+
+properties - vlastnosti = datova slozka
+    get-set
+    kdyz set chybi, je slozka read-only
+    kdyz get chyby, je slozka write-only
+
+sealed - od tedlech trid nejde dedit
+public sealed override void neco() ... uz dal nebude virtualni
+
+INTERFACE
+je to takova smlouva - rika se v ni, co bude mit definovano potomek
 
 DELEGATE
 delegate int Funkce(int x, int y);

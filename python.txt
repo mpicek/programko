@@ -1,0 +1,49 @@
+PYTHON
+
+"textovej retezec" ... je nemenitelnej
+a[1:3]
+a[3::2] ... to posledni je krok, tzn jde to od tretiho do niceho (=konec) po
+    kroku delky 2 (tzn. ob prvek)
+.replace("min", "max")
+"a={0} b={1} ab={0}{1}".format(12, 5)
+
+TUPLE
+n-tice - NEMENITELNA
+("prdel", "strom", 420, "blaze it")
+asi je dobra na vraceni parametru z funkce
+
+LIST
+seznam, je to pole
+["ahoj", 2]
+.append, .insert(kam, co), .extend(seznam)
+
+SET
+mnozina (hashovaci tabulka, kde jsou jen klice)
+{1, 2}
+.add, .remove
+
+DICTIONARY
+slovnik - hashovaci tabulka, klic hodnota
+{ 1:"a", 5:"xy" }
+
+
+OPERATOR IS
+a is b ... jestli ukazuje na stejny objekt
+
+PRI PREDAVANI DO FUNKCE SE PREDAVA ODKAZ, NEKOPIRUJE SE NIC
+
+OBJEKTY
+__init__(self): ... construktor
+kazda funkce ma prvni parametr self
+class B(A): ... trida B dedi od tridy A
+super().metoda() ... volame metodu predka
+
+VYJIMKY
+try, except, finally
+
+assert
+
+Unit testy - modul unittest
+test driven development
+
+lambda x: 1/(x+1)

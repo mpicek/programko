@@ -1,0 +1,10 @@
+zkouset vsechno resit dynamickym prog., kdyz to neuspeje, zkusit neco jinyho
+http://forum.matfyz.info/viewtopic.php?f=247&t=11818
+
+halda v O(n)
+definice O, Theta, Omega
+casova slozitost trideni + dukaz
+grafovy algoritmy + dukaz
+kostry + dukaz
+prace s AVL stromy
+dynamicke programovani - uzavorkovani matic

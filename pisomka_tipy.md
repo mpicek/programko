@@ -1,6 +1,12 @@
 Vo všetkých ako kategóriách bude ako príklad uvedený riešenie problému:
 **Najít člověka/lidi, kteří se na náměstí vyskytují nejdelší dobu.**
 
+#Tohle je typ na zkousku:
+DOBRA RADA, KDYZ DOSTANEME PERGELA:
+tohle napsala jedna holka na forum, co pergela mela:
+Z ústní mi dal dynamické programování a ptal se jaký znám použití, 
+    uzávorkování násobení matic je prý jeho nejoblíbenější.
+
 
 # Postřehy
 

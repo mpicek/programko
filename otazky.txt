@@ -1,11 +1,6 @@
 zkouset vsechno resit dynamickym prog., kdyz to neuspeje, zkusit neco jinyho
 http://forum.matfyz.info/viewtopic.php?f=247&t=11818
 
-DOBRA RADA, KDYZ DOSTANEME PERGELA:
-tohle napsala jedna holka na forum, co pergela mela:
-Z ústní mi dal dynamické programování a ptal se jaký znám použití, 
-    uzávorkování násobení matic je prý jeho nejoblíbenější.
-
 halda v O(n)
 definice O, Theta, Omega
 casova slozitost trideni + dukaz

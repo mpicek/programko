@@ -12,3 +12,4 @@ externi trideni
 kdy ma trida bezparametrovy konstruktor
 Kolik max rotaci pri insertu do AVL (1?)
 kolik max rotaci pri delete do AVL (logn?)
+min max algoritmus
